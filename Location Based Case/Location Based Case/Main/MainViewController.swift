@@ -122,20 +122,36 @@ extension MainViewController: MainViewModelDelegate {
     
     func didAddRoutePoint(_ location: CLLocation) {
         DispatchQueue.main.async { [weak self] in
-            self?.addAnnotation(for: location)
+            let annotationIndex = self?.routeAnnotations.count ?? 0 + 1
+            let annotation = RouteAnnotation(coordinate: location.coordinate, index: annotationIndex)
+            
+            self?.mapView.addAnnotation(annotation)
+            self?.routeAnnotations.append(annotation)
+            self?.resetRouteButton?.isEnabled = true
         }
     }
     
     func didLoadSavedRoute(_ locations: [CLLocation]) {
         DispatchQueue.main.async { [weak self] in
             self?.clearAnnotations()
+
+            var newAnnotations: [RouteAnnotation] = []
             
-            for location in locations {
-                self?.addAnnotation(for: location)
+            for (index, location) in locations.enumerated() {
+                let annotationIndex = index + 1
+                let annotation = RouteAnnotation(coordinate: location.coordinate, index: annotationIndex)
+                newAnnotations.append(annotation)
+                self?.routeAnnotations.append(annotation)
             }
             
-            if let lastLocation = locations.last {
-                self?.setMapRegion(for: lastLocation)
+            if !newAnnotations.isEmpty {
+                self?.mapView.addAnnotations(newAnnotations)
+                self?.resetRouteButton?.isEnabled = true
+                
+                // Set region to the last location if available
+                if let lastLocation = locations.last {
+                    self?.setMapRegion(for: lastLocation)
+                }
             }
         }
     }
