@@ -43,7 +43,8 @@ final class AppCoordinator {
     private func showMain() {
         let coordinator = MainCoordinator(
             navigationController: navigationController,
-            locationManager: dependencyContainer.locationManager
+            locationManager: dependencyContainer.locationManager,
+            dataManager: dependencyContainer.dataManager
         )
         mainCoordinator = coordinator
         coordinator.start()

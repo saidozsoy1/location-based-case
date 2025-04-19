@@ -15,7 +15,7 @@ final class SplashViewController: UIViewController {
         
         print("didload splash")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
             print("Splash timer completed")
             self?.onFinish?()
         }

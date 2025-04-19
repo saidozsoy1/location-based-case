@@ -21,6 +21,7 @@ protocol MainViewModelDelegate: AnyObject {
 
 final class MainViewModel {
     private var locationManager: LocationManaging
+    private var dataManager: DataManaging
     weak var delegate: MainViewModelDelegate?
     
     private var isTrackingActive = false {
@@ -39,10 +40,10 @@ final class MainViewModel {
     
     private var routePoints: [CLLocation] = []
     private let minimumDistanceThreshold: CLLocationDistance = 100
-    private let routePointsKey = "savedRoutePoints"
     
-    init(locationManager: LocationManaging) {
+    init(locationManager: LocationManaging, dataManager: DataManaging) {
         self.locationManager = locationManager
+        self.dataManager = dataManager
         self.locationManager.delegate = self
         loadSavedRoute()
     }
@@ -61,7 +62,7 @@ final class MainViewModel {
     
     func startUpdatingLocation() {
         if authorizationStatus != .authorizedWhenInUse &&
-            authorizationStatus != .authorizedAlways {
+           authorizationStatus != .authorizedAlways {
             // Request permission if not authorized
             requestAlwaysPermission()
         }
@@ -81,7 +82,7 @@ final class MainViewModel {
     
     func resetRoute() {
         routePoints.removeAll()
-        UserDefaults.standard.removeObject(forKey: routePointsKey)
+        dataManager.clearRoutePoints()
         delegate?.didLoadSavedRoute([])
     }
     
@@ -101,28 +102,25 @@ final class MainViewModel {
     }
     
     private func saveRoute() {
-        let routeData = routePoints.map { RoutePoint(location: $0) }
-        
         do {
-            let data = try JSONEncoder().encode(routeData)
-            UserDefaults.standard.set(data, forKey: routePointsKey)
+            let routePointModels = dataManager.convertToRoutePoints(routePoints)
+            try dataManager.saveRoutePoints(routePointModels)
         } catch {
-            print("Error encoding route data: \(error)")
+            print("Error saving route: \(error)")
         }
     }
     
     func loadSavedRoute() {
-        guard let data = UserDefaults.standard.data(forKey: routePointsKey) else {
-            return
-        }
-        
         do {
-            let routeData = try JSONDecoder().decode([RoutePoint].self, from: data)
-            let locations = routeData.map { $0.toLocation() }
+            guard let routePointModels = try dataManager.loadRoutePoints() else {
+                return
+            }
+            
+            let locations = dataManager.convertToLocations(routePointModels)
             routePoints = locations
             delegate?.didLoadSavedRoute(locations)
         } catch {
-            print("Error decoding route data: \(error)")
+            print("Error loading route: \(error)")
         }
     }
 }

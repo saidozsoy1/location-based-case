@@ -24,4 +24,4 @@ struct RoutePoint: Codable {
         let date = Date(timeIntervalSince1970: timestamp)
         return CLLocation(coordinate: coordinate, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: date)
     }
-} 
+}

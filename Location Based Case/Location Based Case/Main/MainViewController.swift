@@ -82,7 +82,6 @@ final class MainViewController: UIViewController {
     private func updateLocationDisplay(_ location: CLLocation) {
         locationLabel?.text = "Latitude: \(location.coordinate.latitude)\nLongitude: \(location.coordinate.longitude)"
         locationLabel?.isHidden = false
-        setMapRegion(for: location)
     }
     
     private func setMapRegion(for location: CLLocation) {
