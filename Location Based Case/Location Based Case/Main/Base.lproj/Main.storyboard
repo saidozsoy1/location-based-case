@@ -3,7 +3,9 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,16 +13,87 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController title="Main" id="BYZ-38-t0r" customClass="MainViewController" customModule="Location_Based_Case" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="Main">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC" customClass="Main">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2Zd-kN-NZP">
+                                <rect key="frame" x="0.0" y="59" width="393.33333333333331" height="793"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="VbH-8w-U7q">
+                                        <rect key="frame" x="0.0" y="0.0" width="393.33333333333331" height="34.333333333333336"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Xn-Hg-hjq">
+                                                <rect key="frame" x="0.0" y="0.0" width="186.66666666666666" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Start Tracking"/>
+                                                <connections>
+                                                    <action selector="toggleTracking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4gD-5s-xbv"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="eJU-Rf-9tA">
+                                                <rect key="frame" x="206.66666666666669" y="0.0" width="186.66666666666669" height="34.333333333333336"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Reset Route"/>
+                                                <connections>
+                                                    <action selector="resetRoute:" destination="BYZ-38-t0r" eventType="touchUpInside" id="i9J-PO-LTZ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NI7-wY-YaU">
+                                        <rect key="frame" x="0.0" y="34.333333333333329" width="393.33333333333331" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="fvv-Sk-zhe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbf-On-BvC">
+                                        <rect key="frame" x="0.0" y="64.333333333333329" width="393.33333333333331" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="p3O-xn-Fl2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mNb-hh-o7C">
+                                        <rect key="frame" x="0.0" y="94.333333333333314" width="393.33333333333331" height="698.66666666666674"/>
+                                        <standardMapConfiguration key="preferredConfiguration"/>
+                                    </mapView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="2Zd-kN-NZP" secondAttribute="bottom" id="JgI-Od-0Rv"/>
+                            <constraint firstItem="2Zd-kN-NZP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Lzy-mI-8x4"/>
+                            <constraint firstItem="2Zd-kN-NZP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YYB-nW-nCk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Zd-kN-NZP" secondAttribute="trailing" id="YmS-h5-0XF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="zbf-On-BvC" id="HsN-PF-S3M"/>
+                        <outlet property="mapView" destination="mNb-hh-o7C" id="OLL-Jl-hFo"/>
+                        <outlet property="resetRouteButton" destination="eJU-Rf-9tA" id="1Nr-4N-rML"/>
+                        <outlet property="startStopTrackingButton" destination="8Xn-Hg-hjq" id="wMc-PC-YEn"/>
+                        <outlet property="statusLabel" destination="NI7-wY-YaU" id="YKH-oh-Ml7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="58" y="-2"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
