@@ -93,7 +93,8 @@ final class MainViewController: UIViewController {
     }
     
     private func addAnnotation(for location: CLLocation) {
-        let annotation = RouteAnnotation(coordinate: location.coordinate, index: routeAnnotations.count + 1)
+        let annotationIndex = routeAnnotations.count + 1
+        let annotation = RouteAnnotation(coordinate: location.coordinate, index: annotationIndex)
         mapView.addAnnotation(annotation)
         routeAnnotations.append(annotation)
         resetRouteButton?.isEnabled = true
@@ -123,14 +124,7 @@ extension MainViewController: MainViewModelDelegate {
     }
     
     func didFailWithError(_ error: Error) {
-        let alertController = UIAlertController(
-            title: "Location Error",
-            message: "Failed to get location: \(error.localizedDescription)",
-            preferredStyle: .alert
-        )
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true)
+        showLocationErrorAlert(error: error)
     }
     
     func didAddRoutePoint(_ location: CLLocation) {
@@ -156,6 +150,18 @@ extension MainViewController: MainViewModelDelegate {
     func didTrackingChange(_ isTrackingActive: Bool) {
         updateTrackingButtonState()
     }
+    
+    func didRetrieveAddress(for annotation: RouteAnnotation, address: String?) {
+        DispatchQueue.main.async { [weak self] in
+            self?.showAddressAlert(address: address)
+        }
+    }
+    
+    func didUpdateLocationForAddress(_ location: CLLocation?) {
+        if let location = location {
+            setMapRegion(for: location)
+        }
+    }
 }
 
 extension MainViewController: MKMapViewDelegate {
@@ -163,6 +169,11 @@ extension MainViewController: MKMapViewDelegate {
         // Skip user location annotation
         if annotation is MKUserLocation {
             return
+        }
+        
+        // Adres bilgisini al
+        if let routeAnnotation = annotation as? RouteAnnotation {
+            viewModel.getAddressForAnnotation(routeAnnotation)
         }
     }
     

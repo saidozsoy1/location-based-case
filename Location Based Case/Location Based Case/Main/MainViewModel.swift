@@ -17,6 +17,8 @@ protocol MainViewModelDelegate: AnyObject {
     func didAddRoutePoint(_ location: CLLocation)
     func didLoadSavedRoute(_ locations: [CLLocation])
     func didTrackingChange(_ isTrackingActive: Bool)
+    func didRetrieveAddress(for annotation: RouteAnnotation, address: String?)
+    func didUpdateLocationForAddress(_ location: CLLocation?)
 }
 
 final class MainViewModel {
@@ -103,6 +105,7 @@ final class MainViewModel {
     
     private func saveRoute() {
         do {
+            // Konumlar kaydedilirken adres bilgisi eklenmez
             let routePointModels = dataManager.convertToRoutePoints(routePoints)
             try dataManager.saveRoutePoints(routePointModels)
         } catch {
@@ -121,6 +124,28 @@ final class MainViewModel {
             delegate?.didLoadSavedRoute(locations)
         } catch {
             print("Error loading route: \(error)")
+        }
+    }
+    
+    // MARK: - Geocoding
+    
+    func getAddressForAnnotation(_ annotation: RouteAnnotation) {
+        let location = CLLocation(
+            coordinate: annotation.coordinate,
+            altitude: 0,
+            horizontalAccuracy: 0,
+            verticalAccuracy: 0,
+            timestamp: Date()
+        )
+        
+        dataManager.getAddressFromLocation(location) { [weak self] address, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                print("Error getting address: \(error.localizedDescription)")
+            }
+            
+            self.delegate?.didRetrieveAddress(for: annotation, address: address)
         }
     }
 }
