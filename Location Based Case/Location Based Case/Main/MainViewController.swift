@@ -82,6 +82,15 @@ final class MainViewController: UIViewController {
     
     private func updateLocationDisplay(_ location: CLLocation) {
         locationLabel?.text = "Latitude: \(location.coordinate.latitude)\nLongitude: \(location.coordinate.longitude)"
+        setMapRegion(for: location)
+    }
+    
+    private func setMapRegion(for location: CLLocation) {
+        let region = MKCoordinateRegion(
+            center: location.coordinate,
+            span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        )
+        mapView.setRegion(region, animated: true)
     }
     
     private func updateAuthorizationStatus(_ status: CLAuthorizationStatus) {
