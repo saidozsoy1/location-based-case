@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; configuration.title = "Start Tracking"; ObjectID = "8Xn-Hg-hjq"; */
+"8Xn-Hg-hjq.configuration.title" = "Start Tracking";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8Xn-Hg-hjq"; */
+"8Xn-Hg-hjq.normalTitle" = "Button";
+
+/* Class = "UIViewController"; title = "Main"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "Main";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NI7-wY-YaU"; */
+"NI7-wY-YaU.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Reset Route"; ObjectID = "eJU-Rf-9tA"; */
+"eJU-Rf-9tA.configuration.title" = "Reset Route";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "eJU-Rf-9tA"; */
+"eJU-Rf-9tA.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "zbf-On-BvC"; */
+"zbf-On-BvC.text" = "Label";

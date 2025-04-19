@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  Location Based Case
+
+  Created by Said Ozsoy on 19.04.2025.
+*/
+
+// Error Messages
+"errorPermissionDenied" = "Location permission is denied. Please enable location services in Settings.";
+"errorServicesDisabled" = "Location services are disabled. Please enable location services in Settings.";
+"errorUnknown" = "An unknown error occurred while trying to track location.";
+
+// Location Status
+"statusPermissionGranted" = "Location permission granted";
+"statusPermissionDenied" = "Location permission denied";
+"statusRestricted" = "Location access is restricted";
+"statusWaiting" = "Waiting for permission...";
+"statusUnknown" = "Unknown authorization status";
+
+// Buttons
+"buttonStartTracking" = "Start Tracking";
+"buttonStopTracking" = "Stop Tracking";
+"buttonResetRoute" = "Reset Route";
+
+// Labels
+"labelLatitude" = "Latitude: %@";
+"labelLongitude" = "Longitude: %@";
+
+// Alerts
+"alertPermissionTitle" = "Location Permission Required";
+"alertPermissionMessage" = "This app needs access to your location to track your route. Please enable location services in Settings.";
+"alertPermissionSettings" = "Settings";
+"alertPermissionCancel" = "Cancel"; 

@@ -1,0 +1,401 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "addressNotFound" : {
+      "comment" : "Address not found message",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Address not found."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres bulunamadı."
+          }
+        }
+      }
+    },
+    "alertPermissionCancel" : {
+      "comment" : "Cancel button in permission alert",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
+          }
+        }
+      }
+    },
+    "alertPermissionMessage" : {
+      "comment" : "Location permission alert message",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app needs access to your location to track your route. Please enable location services in Settings."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu uygulama rotanızı takip etmek için konumunuza erişim gerektirir. Lütfen Ayarlar'dan konum servislerini etkinleştirin."
+          }
+        }
+      }
+    },
+    "alertPermissionSettings" : {
+      "comment" : "Settings button in permission alert",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar"
+          }
+        }
+      }
+    },
+    "alertPermissionTitle" : {
+      "comment" : "Location permission alert title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location Permission Required"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum İzni Gerekli"
+          }
+        }
+      }
+    },
+    "buttonResetRoute" : {
+      "comment" : "Reset route button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Route"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotayı Sıfırla"
+          }
+        }
+      }
+    },
+    "buttonStartTracking" : {
+      "comment" : "Start tracking button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Tracking"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takibi Başlat"
+          }
+        }
+      }
+    },
+    "buttonStopTracking" : {
+      "comment" : "Stop tracking button",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop Tracking"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Takibi Durdur"
+          }
+        }
+      }
+    },
+    "error" : {
+      "comment" : "Error title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata"
+          }
+        }
+      }
+    },
+    "errorPermissionDenied" : {
+      "comment" : "Error message when location permission is denied",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location permission is denied. Please enable location services in Settings."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum izni reddedildi. Lütfen Ayarlar'dan konum servislerini etkinleştirin."
+          }
+        }
+      }
+    },
+    "errorServicesDisabled" : {
+      "comment" : "Error message when location services are disabled",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location services are disabled. Please enable location services in Settings."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum servisleri devre dışı. Lütfen Ayarlar'dan konum servislerini etkinleştirin."
+          }
+        }
+      }
+    },
+    "errorUnknown" : {
+      "comment" : "Unknown location error message",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unknown error occurred while trying to track location."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum takibi sırasında bilinmeyen bir hata oluştu."
+          }
+        }
+      }
+    },
+    "failedToGetLocation" : {
+      "comment" : "Failed to get location format",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to get location: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum alınamadı: %@"
+          }
+        }
+      }
+    },
+    "labelLatitude" : {
+      "comment" : "Latitude format",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latitude: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enlem: %@"
+          }
+        }
+      }
+    },
+    "labelLongitude" : {
+      "comment" : "Longitude format",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longitude: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Boylam: %@"
+          }
+        }
+      }
+    },
+    "locationError" : {
+      "comment" : "Location Error title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location Error"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum Hatası"
+          }
+        }
+      }
+    },
+    "locationInfo" : {
+      "comment" : "Location Info title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location Info"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum Bilgisi"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "comment" : "OK"
+    },
+    "okay" : {
+      "comment" : "OK",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "statusPermissionDenied" : {
+      "comment" : "Location permission denied",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location permission denied"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum izni reddedildi"
+          }
+        }
+      }
+    },
+    "statusPermissionGranted" : {
+      "comment" : "Location permission granted",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location permission granted"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum izni verildi"
+          }
+        }
+      }
+    },
+    "statusRestricted" : {
+      "comment" : "Location access is restricted",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location access is restricted"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konum erişimi kısıtlı"
+          }
+        }
+      }
+    },
+    "statusUnknown" : {
+      "comment" : "Unknown location authorization status",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown authorization status"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilinmeyen yetkilendirme durumu"
+          }
+        }
+      }
+    },
+    "statusWaiting" : {
+      "comment" : "Waiting for location permission",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waiting for permission..."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin bekleniyor..."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

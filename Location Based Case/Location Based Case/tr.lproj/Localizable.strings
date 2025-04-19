@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  Location Based Case
+
+  Created by Said Ozsoy on 19.04.2025.
+*/
+
+// Error Messages
+"errorPermissionDenied" = "Konum izni reddedildi. Lütfen Ayarlar'dan konum servislerini etkinleştirin.";
+"errorServicesDisabled" = "Konum servisleri devre dışı. Lütfen Ayarlar'dan konum servislerini etkinleştirin.";
+"errorUnknown" = "Konum takibi sırasında bilinmeyen bir hata oluştu.";
+
+// Location Status
+"statusPermissionGranted" = "Konum izni verildi";
+"statusPermissionDenied" = "Konum izni reddedildi";
+"statusRestricted" = "Konum erişimi kısıtlı";
+"statusWaiting" = "İzin bekleniyor...";
+"statusUnknown" = "Bilinmeyen yetkilendirme durumu";
+
+// Buttons
+"buttonStartTracking" = "Takibi Başlat";
+"buttonStopTracking" = "Takibi Durdur";
+"buttonResetRoute" = "Rotayı Sıfırla";
+
+// Labels
+"labelLatitude" = "Enlem: %@";
+"labelLongitude" = "Boylam: %@";
+
+// Alerts
+"alertPermissionTitle" = "Konum İzni Gerekli";
+"alertPermissionMessage" = "Bu uygulama rotanızı takip etmek için konumunuza erişim gerektirir. Lütfen Ayarlar'dan konum servislerini etkinleştirin.";
+"alertPermissionSettings" = "Ayarlar";
+"alertPermissionCancel" = "İptal"; 

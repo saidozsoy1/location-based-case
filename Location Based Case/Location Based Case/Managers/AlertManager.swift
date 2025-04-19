@@ -15,7 +15,7 @@ class AlertManager {
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: L10n.Alert.okay, style: .default) { _ in
             completion?()
         })
         
@@ -23,16 +23,17 @@ class AlertManager {
     }
     
     static func showAddressAlert(on viewController: UIViewController, address: String?) {
-        let message = address ?? "Address not found."
-        showAlert(on: viewController, title: "Location Info", message: message)
+        let message = address ?? L10n.Alert.addressNotFound
+        showAlert(on: viewController, title: L10n.Alert.locationInfoTitle, message: message)
     }
     
     static func showErrorAlert(on viewController: UIViewController, error: Error) {
-        showAlert(on: viewController, title: "Error", message: error.localizedDescription)
+        showAlert(on: viewController, title: L10n.Error.title, message: error.localizedDescription)
     }
     
     static func showLocationErrorAlert(on viewController: UIViewController, error: Error) {
-        showAlert(on: viewController, title: "Location Error", message: "Failed to get location: \(error.localizedDescription)")
+        let message = L10n.Error.failedToGetLocation(error.localizedDescription)
+        showAlert(on: viewController, title: L10n.Error.locationTitle, message: message)
     }
     
     static func showPermissionAlert(on viewController: UIViewController, title: String, message: String) {
@@ -42,8 +43,8 @@ class AlertManager {
             preferredStyle: .alert
         )
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: L10n.Alert.permissionCancel, style: .cancel))
+        alert.addAction(UIAlertAction(title: L10n.Alert.permissionSettings, style: .default) { _ in
             if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsURL)
             }

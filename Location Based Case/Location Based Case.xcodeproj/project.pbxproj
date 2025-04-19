@@ -12,6 +12,8 @@
 		8D5CC73C2DB426B8006553B2 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CC73B2DB426B8006553B2 /* AlertManager.swift */; };
 		8D5CC73E2DB4280C006553B2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CC73D2DB4280C006553B2 /* Extensions.swift */; };
 		8D5CC7412DB432C6006553B2 /* LoadingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CC7402DB432C6006553B2 /* LoadingManager.swift */; };
+		8D5CC74D2DB44002006553B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5CC74C2DB44002006553B2 /* Localizable.xcstrings */; };
+		8D5CC74F2DB440C8006553B2 /* LocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CC74E2DB440C8006553B2 /* LocalizationKeys.swift */; };
 		8D9241FE2DB3BF910005A4CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9241F42DB3BF910005A4CB /* AppDelegate.swift */; };
 		8D9241FF2DB3BF910005A4CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9241FB2DB3BF910005A4CB /* SceneDelegate.swift */; };
 		8D9242002DB3BF910005A4CB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9241FC2DB3BF910005A4CB /* MainViewController.swift */; };
@@ -36,6 +38,8 @@
 		8D5CC73B2DB426B8006553B2 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		8D5CC73D2DB4280C006553B2 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8D5CC7402DB432C6006553B2 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
+		8D5CC74C2DB44002006553B2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		8D5CC74E2DB440C8006553B2 /* LocalizationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKeys.swift; sourceTree = "<group>"; };
 		8D9241F42DB3BF910005A4CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D9241F52DB3BF910005A4CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D9241F62DB3BF910005A4CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 		8D5CC73F2DB42825006553B2 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				8D5CC74E2DB440C8006553B2 /* LocalizationKeys.swift */,
 				8D5CC73D2DB4280C006553B2 /* Extensions.swift */,
 			);
 			path = Utils;
@@ -118,6 +123,7 @@
 				8D9242132DB3C1740005A4CB /* Splash */,
 				8D5CC73F2DB42825006553B2 /* Utils */,
 				8D9241F42DB3BF910005A4CB /* AppDelegate.swift */,
+				8D5CC74C2DB44002006553B2 /* Localizable.xcstrings */,
 				8D9241FB2DB3BF910005A4CB /* SceneDelegate.swift */,
 				8D9241F52DB3BF910005A4CB /* Assets.xcassets */,
 				8D9241F62DB3BF910005A4CB /* Info.plist */,
@@ -205,6 +211,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 8DDB795C2DB2753200408B2B;
 			minimizedProjectReferenceProxies = 1;
@@ -224,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9242012DB3BF910005A4CB /* Assets.xcassets in Resources */,
+				8D5CC74D2DB44002006553B2 /* Localizable.xcstrings in Resources */,
 				8D9242032DB3BF910005A4CB /* LaunchScreen.storyboard in Resources */,
 				8D9242042DB3BF910005A4CB /* Main.storyboard in Resources */,
 				8D9242102DB3C1130005A4CB /* Splash.storyboard in Resources */,
@@ -237,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5CC74F2DB440C8006553B2 /* LocalizationKeys.swift in Sources */,
 				8D5CC7412DB432C6006553B2 /* LoadingManager.swift in Sources */,
 				8D9242062DB3BFCC0005A4CB /* AppCoordinator.swift in Sources */,
 				8D92420C2DB3C0530005A4CB /* MainCoordinator.swift in Sources */,
@@ -394,6 +403,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -450,6 +460,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

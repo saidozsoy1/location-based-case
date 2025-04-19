@@ -18,11 +18,11 @@ enum LocationTrackingError: Error {
     var localizedDescription: String {
         switch self {
         case .permissionDenied:
-            return "Location permission is denied. Please enable location services in Settings."
+            return L10n.Error.permissionDenied
         case .locationServicesDisabled:
-            return "Location services are disabled. Please enable location services in Settings."
+            return L10n.Error.servicesDisabled
         case .unknown:
-            return "An unknown error occurred while trying to track location."
+            return L10n.Error.unknown
         }
     }
 }
@@ -55,7 +55,9 @@ final class MainViewModel {
     
     private var isTrackingActive = false {
         didSet {
-            let trackingButtonText = isTrackingActive ? "Stop Tracking" : "Start Tracking"
+            let trackingButtonText = isTrackingActive ? 
+                L10n.Button.stopTracking : 
+                L10n.Button.startTracking
             delegate?.didTrackingChange(isTrackingActive, trackingButtonText: trackingButtonText)
         }
     }
@@ -232,29 +234,29 @@ extension MainViewModel: LocationManagerDelegate {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
             requestLocation()
-            statusText = "Location permission granted"
+            statusText = L10n.Status.permissionGranted
             // If user just granted permission and we were waiting, start tracking
             if !isTracking {
                 startTracking()
             }
         case .denied:
-            statusText = "Location permission denied"
+            statusText = L10n.Status.permissionDenied
             // If permission is denied while tracking, stop tracking
             if isTrackingActive {
                 stopTracking()
                 delegate?.didFailWithError(LocationTrackingError.permissionDenied)
             }
         case .restricted:
-            statusText = "Location access is restricted"
+            statusText = L10n.Status.restricted
             // If access is restricted while tracking, stop tracking
             if isTrackingActive {
                 stopTracking()
                 delegate?.didFailWithError(LocationTrackingError.permissionDenied)
             }
         case .notDetermined:
-            statusText = "Waiting for permission..."
+            statusText = L10n.Status.waiting
         @unknown default:
-            statusText = "Unknown authorization status"
+            statusText = L10n.Status.unknown
         }
         delegate?.didChangeAuthorizationStatus(statusText: statusText)
     }

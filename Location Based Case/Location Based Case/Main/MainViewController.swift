@@ -42,6 +42,8 @@ final class MainViewController: UIViewController {
     private func setupUI() {
         statusLabel?.isHidden = true
         locationLabel?.isHidden = true
+        startStopTrackingButton?.setTitle(L10n.Button.startTracking, for: .normal)
+        resetRouteButton?.setTitle(L10n.Button.resetRoute, for: .normal)
         resetRouteButton?.isEnabled = !routeAnnotations.isEmpty
     }
     
@@ -66,7 +68,11 @@ final class MainViewController: UIViewController {
     }
     
     private func updateLocationDisplay(_ location: CLLocation) {
-        locationLabel?.text = "Latitude: \(location.coordinate.latitude)\nLongitude: \(location.coordinate.longitude)"
+        let latitudeStr = String(location.coordinate.latitude)
+        let longitudeStr = String(location.coordinate.longitude)
+        let latitudeText = L10n.Label.latitude(latitudeStr)
+        let longitudeText = L10n.Label.longitude(longitudeStr)
+        locationLabel?.text = "\(latitudeText)\n\(longitudeText)"
         locationLabel?.isHidden = false
     }
     
@@ -135,8 +141,7 @@ extension MainViewController: MainViewModelDelegate {
     }
     
     func didTrackingChange(_ isTrackingActive: Bool, trackingButtonText: String) {
-        let title = isTrackingActive ? "Stop Tracking" : "Start Tracking"
-        startStopTrackingButton?.setTitle(title, for: .normal)
+        startStopTrackingButton?.setTitle(trackingButtonText, for: .normal)
     }
     
     func didRetrieveAddress(for annotation: RouteAnnotation, address: String?) {
