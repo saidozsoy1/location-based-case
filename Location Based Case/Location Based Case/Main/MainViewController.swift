@@ -42,6 +42,8 @@ final class MainViewController: UIViewController {
     }
     
     private func setupUI() {
+        statusLabel?.isHidden = true
+        locationLabel?.isHidden = true
         resetRouteButton?.isEnabled = !routeAnnotations.isEmpty
     }
     
@@ -61,7 +63,6 @@ final class MainViewController: UIViewController {
     private func startLocationTracking() {
         viewModel.startUpdatingLocation()
         mapView.showsUserLocation = true
-        locationLabel?.text = "Tracking location..."
     }
     
     private func stopLocationTracking() {
@@ -70,8 +71,6 @@ final class MainViewController: UIViewController {
         mapView.setUserTrackingMode(.none, animated: true)
         if let location = viewModel.currentLocation {
             updateLocationDisplay(location)
-        } else {
-            locationLabel?.text = "Location tracking stopped"
         }
     }
     
@@ -82,6 +81,7 @@ final class MainViewController: UIViewController {
     
     private func updateLocationDisplay(_ location: CLLocation) {
         locationLabel?.text = "Latitude: \(location.coordinate.latitude)\nLongitude: \(location.coordinate.longitude)"
+        locationLabel?.isHidden = false
         setMapRegion(for: location)
     }
     
@@ -108,6 +108,9 @@ final class MainViewController: UIViewController {
     
     private func updateAuthorizationStatusText(_ text: String?) {
         statusLabel?.text = text
+        UIView.animate(withDuration: 0.25) { // doesnt require weak self
+            self.statusLabel?.isHidden = false
+        }
     }
 }
 
