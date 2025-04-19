@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd" version="1.1" creator="Xcode">
+    <wpt lat="37.331705" lon="-122.030237">
+        <name>Apple Park Start</name>
+        <time>2023-01-01T12:00:00Z</time>
+    </wpt>
+    <wpt lat="37.335363" lon="-122.008919">
+        <name>Highway 280</name>
+        <time>2023-01-01T12:01:00Z</time>
+    </wpt>
+    <wpt lat="37.345363" lon="-121.992919">
+        <name>Highway 280 (2)</name>
+        <time>2023-01-01T12:02:00Z</time>
+    </wpt>
+    <wpt lat="37.356942" lon="-121.976378">
+        <name>Highway 280 (3)</name>
+        <time>2023-01-01T12:03:00Z</time>
+    </wpt>
+    <wpt lat="37.369863" lon="-121.963117">
+        <name>Highway 280 (4)</name>
+        <time>2023-01-01T12:04:00Z</time>
+    </wpt>
+    <wpt lat="37.389571" lon="-121.939641">
+        <name>Highway Junction</name>
+        <time>2023-01-01T12:06:00Z</time>
+    </wpt>
+    <wpt lat="37.415087" lon="-121.831821">
+        <name>End Point</name>
+        <time>2023-01-01T12:14:00Z</time>
+    </wpt>
+</gpx>

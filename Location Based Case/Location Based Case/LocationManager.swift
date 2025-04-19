@@ -16,6 +16,7 @@ protocol LocationManaging {
     func getCurrentLocation() -> CLLocation?
     func requestLocation()
     func requestWhenInUseAuthorization()
+    func requestAlwaysAuthorization()
     func startUpdatingLocation()
     func stopUpdatingLocation()
 }
@@ -35,13 +36,13 @@ final class LocationManager: NSObject, LocationManaging {
     var authorizationStatus: CLAuthorizationStatus {
         return locationManager.authorizationStatus
     }
-
+    
     override init() {
         super.init()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-
+    
     func getCurrentLocation() -> CLLocation? {
         return locationManager.location
     }
@@ -54,12 +55,22 @@ final class LocationManager: NSObject, LocationManaging {
         locationManager.requestWhenInUseAuthorization()
     }
     
+    func requestAlwaysAuthorization() {
+        locationManager.requestAlwaysAuthorization()
+    }
+    
     func startUpdatingLocation() {
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100.0
         locationManager.startUpdatingLocation()
     }
     
     func stopUpdatingLocation() {
         locationManager.stopUpdatingLocation()
+        locationManager.allowsBackgroundLocationUpdates = false
+        locationManager.pausesLocationUpdatesAutomatically = true
     }
 }
 

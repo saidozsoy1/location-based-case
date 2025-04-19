@@ -21,6 +21,8 @@
 		8D9242102DB3C1130005A4CB /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D92420F2DB3C1130005A4CB /* Splash.storyboard */; };
 		8D9242122DB3C1240005A4CB /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9242112DB3C1240005A4CB /* SplashCoordinator.swift */; };
 		8D9242152DB3C4270005A4CB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9242142DB3C4260005A4CB /* MainViewModel.swift */; };
+		8D9242192DB3DD9E0005A4CB /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9242172DB3DD9E0005A4CB /* RoutePoint.swift */; };
+		8D92421A2DB3DD9E0005A4CB /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9242162DB3DD9E0005A4CB /* RouteAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,9 @@
 		8D92420F2DB3C1130005A4CB /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		8D9242112DB3C1240005A4CB /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
 		8D9242142DB3C4260005A4CB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		8D9242162DB3DD9E0005A4CB /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
+		8D9242172DB3DD9E0005A4CB /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
+		8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AppleHighwayDrive.gpx; path = "Location Based Case/AppleHighwayDrive.gpx"; sourceTree = "<group>"; };
 		8DDB79652DB2753200408B2B /* Location Based Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Based Case.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,6 +75,7 @@
 				8D9242052DB3BFCC0005A4CB /* AppCoordinator.swift */,
 				8D9242072DB3BFF70005A4CB /* AppDependencyContainer.swift */,
 				8D9242092DB3C0260005A4CB /* LocationManager.swift */,
+				8D9242182DB3DD9E0005A4CB /* Models */,
 				8D9241F32DB3BF910005A4CB /* Main */,
 				8D9242132DB3C1740005A4CB /* Splash */,
 				8D9241F42DB3BF910005A4CB /* AppDelegate.swift */,
@@ -91,9 +97,19 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		8D9242182DB3DD9E0005A4CB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8D9242162DB3DD9E0005A4CB /* RouteAnnotation.swift */,
+				8D9242172DB3DD9E0005A4CB /* RoutePoint.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8DDB795C2DB2753200408B2B = {
 			isa = PBXGroup;
 			children = (
+				8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */,
 				8D9241FD2DB3BF910005A4CB /* Location Based Case */,
 				8DDB79662DB2753200408B2B /* Products */,
 			);
@@ -184,6 +200,8 @@
 			files = (
 				8D9242062DB3BFCC0005A4CB /* AppCoordinator.swift in Sources */,
 				8D92420C2DB3C0530005A4CB /* MainCoordinator.swift in Sources */,
+				8D9242192DB3DD9E0005A4CB /* RoutePoint.swift in Sources */,
+				8D92421A2DB3DD9E0005A4CB /* RouteAnnotation.swift in Sources */,
 				8D9241FE2DB3BF910005A4CB /* AppDelegate.swift in Sources */,
 				8D9242122DB3C1240005A4CB /* SplashCoordinator.swift in Sources */,
 				8D92420A2DB3C0260005A4CB /* LocationManager.swift in Sources */,

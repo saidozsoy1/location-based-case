@@ -19,7 +19,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var resetRouteButton: UIButton?
 
     
-    private var isTracking = false
+    private var routeAnnotations: [RouteAnnotation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,45 +29,45 @@ final class MainViewController: UIViewController {
         setupMap()
         setupViewModel()
         updateTrackingButtonState()
-        updateAuthorizationStatus(viewModel.authorizationStatus)
+        mapView.showsUserLocation = viewModel.isTracking
     }
     
     @IBAction func toggleTracking(_ sender: Any) {
-        isTracking.toggle()
-        isTracking ? startLocationTracking() : stopLocationTracking()
-        
-        updateTrackingButtonState()
+        viewModel.isTracking ? stopLocationTracking() : startLocationTracking()
     }
     
     @IBAction func resetRoute(_ sender: Any) {
-        
+        clearAnnotations()
+        viewModel.resetRoute()
     }
     
     private func setupUI() {
-        
+        resetRouteButton?.isEnabled = !routeAnnotations.isEmpty
     }
     
     private func setupMap() {
         mapView.showsUserTrackingButton = true
-        mapView.showsUserLocation = true
+        mapView.delegate = self
     }
     
     private func setupViewModel() {
         viewModel.delegate = self
-        
-        // If we already have a location, update right away
         if let location = viewModel.currentLocation {
             updateLocationDisplay(location)
         }
+        viewModel.loadSavedRoute()
     }
     
     private func startLocationTracking() {
         viewModel.startUpdatingLocation()
+        mapView.showsUserLocation = true
         locationLabel?.text = "Tracking location..."
     }
     
     private func stopLocationTracking() {
         viewModel.stopUpdatingLocation()
+        mapView.showsUserLocation = false
+        mapView.setUserTrackingMode(.none, animated: true)
         if let location = viewModel.currentLocation {
             updateLocationDisplay(location)
         } else {
@@ -76,7 +76,7 @@ final class MainViewController: UIViewController {
     }
     
     private func updateTrackingButtonState() {
-        let title = isTracking ? "Stop Tracking" : "Start Tracking"
+        let title = viewModel.isTracking ? "Stop Tracking" : "Start Tracking"
         startStopTrackingButton?.setTitle(title, for: .normal)
     }
     
@@ -93,21 +93,21 @@ final class MainViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
     
-    private func updateAuthorizationStatus(_ status: CLAuthorizationStatus) {
-        switch status {
-        case .authorizedWhenInUse, .authorizedAlways:
-            statusLabel?.text = "Location permission granted"
-        case .denied:
-            statusLabel?.text = "Location permission denied"
-            isTracking = false
-            updateTrackingButtonState()
-        case .restricted:
-            statusLabel?.text = "Location access is restricted"
-        case .notDetermined:
-            statusLabel?.text = "Waiting for permission..."
-        @unknown default:
-            statusLabel?.text = "Unknown authorization status"
-        }
+    private func addAnnotation(for location: CLLocation) {
+        let annotation = RouteAnnotation(coordinate: location.coordinate, index: routeAnnotations.count + 1)
+        mapView.addAnnotation(annotation)
+        routeAnnotations.append(annotation)
+        resetRouteButton?.isEnabled = true
+    }
+    
+    private func clearAnnotations() {
+        mapView.removeAnnotations(routeAnnotations)
+        routeAnnotations.removeAll()
+        resetRouteButton?.isEnabled = false
+    }
+    
+    private func updateAuthorizationStatusText(_ text: String?) {
+        statusLabel?.text = text
     }
 }
 
@@ -116,8 +116,8 @@ extension MainViewController: MainViewModelDelegate {
         updateLocationDisplay(location)
     }
     
-    func didChangeAuthorizationStatus(_ status: CLAuthorizationStatus) {
-        updateAuthorizationStatus(status)
+    func didChangeAuthorizationStatus(statusText: String?) {
+        updateAuthorizationStatusText(statusText)
     }
     
     func didFailWithError(_ error: Error) {
@@ -129,5 +129,56 @@ extension MainViewController: MainViewModelDelegate {
         
         alertController.addAction(UIAlertAction(title: "OK", style: .default))
         present(alertController, animated: true)
+    }
+    
+    func didAddRoutePoint(_ location: CLLocation) {
+        DispatchQueue.main.async { [weak self] in
+            self?.addAnnotation(for: location)
+        }
+    }
+    
+    func didLoadSavedRoute(_ locations: [CLLocation]) {
+        DispatchQueue.main.async { [weak self] in
+            self?.clearAnnotations()
+            
+            for location in locations {
+                self?.addAnnotation(for: location)
+            }
+            
+            if let lastLocation = locations.last {
+                self?.setMapRegion(for: lastLocation)
+            }
+        }
+    }
+    
+    func didTrackingChange(_ isTrackingActive: Bool) {
+        updateTrackingButtonState()
+    }
+}
+
+extension MainViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+        // Skip user location annotation
+        if annotation is MKUserLocation {
+            return
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil // Use default for user location
+        }
+        
+        let identifier = "routeAnnotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
     }
 }
