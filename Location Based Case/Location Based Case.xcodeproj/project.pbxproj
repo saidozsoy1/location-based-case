@@ -6,30 +6,25 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8D9241FE2DB3BF910005A4CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9241F42DB3BF910005A4CB /* AppDelegate.swift */; };
+		8D9241FF2DB3BF910005A4CB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9241FB2DB3BF910005A4CB /* SceneDelegate.swift */; };
+		8D9242002DB3BF910005A4CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9241FC2DB3BF910005A4CB /* ViewController.swift */; };
+		8D9242012DB3BF910005A4CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9241F52DB3BF910005A4CB /* Assets.xcassets */; };
+		8D9242032DB3BF910005A4CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9241F82DB3BF910005A4CB /* LaunchScreen.storyboard */; };
+		8D9242042DB3BF910005A4CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9241FA2DB3BF910005A4CB /* Main.storyboard */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		8D9241F42DB3BF910005A4CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8D9241F52DB3BF910005A4CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D9241F62DB3BF910005A4CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D9241F72DB3BF910005A4CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D9241F92DB3BF910005A4CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D9241FB2DB3BF910005A4CB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8D9241FC2DB3BF910005A4CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8DDB79652DB2753200408B2B /* Location Based Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Based Case.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		8DDB79772DB2753400408B2B /* Exceptions for "Location Based Case" folder in "Location Based Case" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 8DDB79642DB2753200408B2B /* Location Based Case */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		8DDB79672DB2753200408B2B /* Location Based Case */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				8DDB79772DB2753400408B2B /* Exceptions for "Location Based Case" folder in "Location Based Case" target */,
-			);
-			path = "Location Based Case";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8DDB79622DB2753200408B2B /* Frameworks */ = {
@@ -42,10 +37,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D9241F32DB3BF910005A4CB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8D9241FD2DB3BF910005A4CB /* Location Based Case */ = {
+			isa = PBXGroup;
+			children = (
+				8D9241F32DB3BF910005A4CB /* Main */,
+				8D9241F42DB3BF910005A4CB /* AppDelegate.swift */,
+				8D9241F52DB3BF910005A4CB /* Assets.xcassets */,
+				8D9241F62DB3BF910005A4CB /* Info.plist */,
+				8D9241F82DB3BF910005A4CB /* LaunchScreen.storyboard */,
+				8D9241FA2DB3BF910005A4CB /* Main.storyboard */,
+				8D9241FB2DB3BF910005A4CB /* SceneDelegate.swift */,
+				8D9241FC2DB3BF910005A4CB /* ViewController.swift */,
+			);
+			path = "Location Based Case";
+			sourceTree = "<group>";
+		};
 		8DDB795C2DB2753200408B2B = {
 			isa = PBXGroup;
 			children = (
-				8DDB79672DB2753200408B2B /* Location Based Case */,
+				8D9241FD2DB3BF910005A4CB /* Location Based Case */,
 				8DDB79662DB2753200408B2B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,9 +89,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				8DDB79672DB2753200408B2B /* Location Based Case */,
 			);
 			name = "Location Based Case";
 			packageProductDependencies = (
@@ -122,6 +136,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9242012DB3BF910005A4CB /* Assets.xcassets in Resources */,
+				8D9242032DB3BF910005A4CB /* LaunchScreen.storyboard in Resources */,
+				8D9242042DB3BF910005A4CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,10 +149,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9241FE2DB3BF910005A4CB /* AppDelegate.swift in Sources */,
+				8D9241FF2DB3BF910005A4CB /* SceneDelegate.swift in Sources */,
+				8D9242002DB3BF910005A4CB /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8D9241F82DB3BF910005A4CB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D9241F72DB3BF910005A4CB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8D9241FA2DB3BF910005A4CB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D9241F92DB3BF910005A4CB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8DDB79792DB2753400408B2B /* Debug */ = {
