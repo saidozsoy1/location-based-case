@@ -23,17 +23,15 @@ final class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("didload main")
         
         setupUI()
         setupMap()
         setupViewModel()
-        updateTrackingButtonState()
         mapView.showsUserLocation = viewModel.isTracking
     }
     
     @IBAction func toggleTracking(_ sender: Any) {
-        viewModel.isTracking ? stopLocationTracking() : startLocationTracking()
+        viewModel.toggleTracking()
     }
     
     @IBAction func resetRoute(_ sender: Any) {
@@ -60,23 +58,11 @@ final class MainViewController: UIViewController {
         viewModel.loadSavedRoute()
     }
     
-    private func startLocationTracking() {
-        viewModel.startUpdatingLocation()
-        mapView.showsUserLocation = true
-    }
-    
-    private func stopLocationTracking() {
-        viewModel.stopUpdatingLocation()
-        mapView.showsUserLocation = false
-        mapView.setUserTrackingMode(.none, animated: true)
-        if let location = viewModel.currentLocation {
-            updateLocationDisplay(location)
+    private func updateMapForTracking(isTracking: Bool) {
+        mapView.showsUserLocation = isTracking
+        if !isTracking {
+            mapView.setUserTrackingMode(.none, animated: true)
         }
-    }
-    
-    private func updateTrackingButtonState() {
-        let title = viewModel.isTracking ? "Stop Tracking" : "Start Tracking"
-        startStopTrackingButton?.setTitle(title, for: .normal)
     }
     
     private func updateLocationDisplay(_ location: CLLocation) {
@@ -124,6 +110,7 @@ extension MainViewController: MainViewModelDelegate {
     }
     
     func didFailWithError(_ error: Error) {
+        hideLoading()
         showLocationErrorAlert(error: error)
     }
     
@@ -147,12 +134,14 @@ extension MainViewController: MainViewModelDelegate {
         }
     }
     
-    func didTrackingChange(_ isTrackingActive: Bool) {
-        updateTrackingButtonState()
+    func didTrackingChange(_ isTrackingActive: Bool, trackingButtonText: String) {
+        let title = isTrackingActive ? "Stop Tracking" : "Start Tracking"
+        startStopTrackingButton?.setTitle(title, for: .normal)
     }
     
     func didRetrieveAddress(for annotation: RouteAnnotation, address: String?) {
         DispatchQueue.main.async { [weak self] in
+            self?.hideLoading()
             self?.showAddressAlert(address: address)
         }
     }
@@ -171,8 +160,9 @@ extension MainViewController: MKMapViewDelegate {
             return
         }
         
-        // Adres bilgisini al
+        // Get address for the selected annotation
         if let routeAnnotation = annotation as? RouteAnnotation {
+            showLoading()
             viewModel.getAddressForAnnotation(routeAnnotation)
         }
     }

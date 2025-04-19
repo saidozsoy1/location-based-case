@@ -24,4 +24,12 @@ extension UIViewController {
     func showLocationErrorAlert(error: Error) {
         AlertManager.showLocationErrorAlert(on: self, error: error)
     }
+    
+    func showPermissionAlert() {
+        AlertManager.showPermissionAlert(
+            on: self,
+            title: "Location Permission Required",
+            message: "Please enable location permissions in settings to use tracking feature."
+        )
+    }
 }

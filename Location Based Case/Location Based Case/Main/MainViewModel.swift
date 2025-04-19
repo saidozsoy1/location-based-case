@@ -10,15 +10,39 @@ import CoreLocation
 import MapKit
 import UIKit
 
+enum LocationTrackingError: Error {
+    case permissionDenied
+    case locationServicesDisabled
+    case unknown
+    
+    var localizedDescription: String {
+        switch self {
+        case .permissionDenied:
+            return "Location permission is denied. Please enable location services in Settings."
+        case .locationServicesDisabled:
+            return "Location services are disabled. Please enable location services in Settings."
+        case .unknown:
+            return "An unknown error occurred while trying to track location."
+        }
+    }
+}
+
+enum TrackingPermissionStatus {
+    case permitted
+    case denied
+    case restricted
+    case undetermined
+}
+
 protocol MainViewModelDelegate: AnyObject {
     func didUpdateLocation(_ location: CLLocation)
     func didChangeAuthorizationStatus(statusText: String?)
     func didFailWithError(_ error: Error)
     func didAddRoutePoint(_ location: CLLocation)
     func didLoadSavedRoute(_ locations: [CLLocation])
-    func didTrackingChange(_ isTrackingActive: Bool)
+    func didTrackingChange(_ isTrackingActive: Bool, trackingButtonText: String)
     func didRetrieveAddress(for annotation: RouteAnnotation, address: String?)
-    func didUpdateLocationForAddress(_ location: CLLocation?)
+    func showPermissionAlert()
 }
 
 final class MainViewModel {
@@ -28,7 +52,8 @@ final class MainViewModel {
     
     private var isTrackingActive = false {
         didSet {
-            delegate?.didTrackingChange(isTrackingActive)
+            let trackingButtonText = isTrackingActive ? "Stop Tracking" : "Start Tracking"
+            delegate?.didTrackingChange(isTrackingActive, trackingButtonText: trackingButtonText)
         }
     }
     
@@ -50,6 +75,59 @@ final class MainViewModel {
         loadSavedRoute()
     }
     
+    func getPermissionStatus() -> TrackingPermissionStatus {
+        switch authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            return .permitted
+        case .denied:
+            return .denied
+        case .restricted:
+            return .restricted
+        case .notDetermined:
+            return .undetermined
+        @unknown default:
+            return .undetermined
+        }
+    }
+    
+    func startTracking() {
+        // First, check if location services are enabled
+        DispatchQueue.main.async { [weak self] in
+            if !CLLocationManager.locationServicesEnabled() {
+                self?.delegate?.didFailWithError(LocationTrackingError.locationServicesDisabled)
+                return
+            }
+        }
+        
+        // Check authorization status
+        switch getPermissionStatus() {
+        case .permitted:
+            // Permission granted, start updating
+            isTrackingActive = true
+            locationManager.startUpdatingLocation()
+        case .denied, .restricted:
+            // Need to show permission alert
+            delegate?.showPermissionAlert()
+        case .undetermined:
+            // Request permission
+            requestAlwaysPermission()
+            // Will start updating after permission is granted
+        }
+    }
+    
+    func stopTracking() {
+        isTrackingActive = false
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func toggleTracking() {
+        if isTracking {
+            stopTracking()
+        } else {
+            startTracking()
+        }
+    }
+    
     func requestLocationPermission() {
         locationManager.requestWhenInUseAuthorization()
     }
@@ -60,22 +138,6 @@ final class MainViewModel {
     
     func requestLocation() {
         locationManager.requestLocation()
-    }
-    
-    func startUpdatingLocation() {
-        if authorizationStatus != .authorizedWhenInUse &&
-           authorizationStatus != .authorizedAlways {
-            // Request permission if not authorized
-            requestAlwaysPermission()
-        }
-        
-        isTrackingActive = true
-        locationManager.startUpdatingLocation()
-    }
-    
-    func stopUpdatingLocation() {
-        isTrackingActive = false
-        locationManager.stopUpdatingLocation()
     }
     
     var isTracking: Bool {
@@ -105,7 +167,6 @@ final class MainViewModel {
     
     private func saveRoute() {
         do {
-            // Konumlar kaydedilirken adres bilgisi eklenmez
             let routePointModels = dataManager.convertToRoutePoints(routePoints)
             try dataManager.saveRoutePoints(routePointModels)
         } catch {
@@ -166,10 +227,24 @@ extension MainViewModel: LocationManagerDelegate {
         case .authorizedWhenInUse, .authorizedAlways:
             requestLocation()
             statusText = "Location permission granted"
+            // If user just granted permission and we were waiting, start tracking
+            if !isTracking {
+                startTracking()
+            }
         case .denied:
             statusText = "Location permission denied"
+            // If permission is denied while tracking, stop tracking
+            if isTrackingActive {
+                stopTracking()
+                delegate?.didFailWithError(LocationTrackingError.permissionDenied)
+            }
         case .restricted:
             statusText = "Location access is restricted"
+            // If access is restricted while tracking, stop tracking
+            if isTrackingActive {
+                stopTracking()
+                delegate?.didFailWithError(LocationTrackingError.permissionDenied)
+            }
         case .notDetermined:
             statusText = "Waiting for permission..."
         @unknown default:
@@ -179,6 +254,10 @@ extension MainViewModel: LocationManagerDelegate {
     }
     
     func didFailWithError(_ error: Error) {
+        // If we get any location error, stop tracking
+        if isTrackingActive {
+            stopTracking()
+        }
         delegate?.didFailWithError(error)
     }
 }

@@ -51,7 +51,7 @@ class DataManager: DataManaging {
     // MARK: - Geocoding Implementation
     
     func getAddressFromLocation(_ location: CLLocation, completion: @escaping (String?, Error?) -> Void) {
-        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+        geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
             guard error == nil else {
                 completion(nil, error)
                 return
@@ -63,7 +63,7 @@ class DataManager: DataManaging {
             }
             
             // Format address from placemark
-            let address = self.formatAddress(from: placemark)
+            let address = self?.formatAddress(from: placemark)
             completion(address, nil)
         }
     }

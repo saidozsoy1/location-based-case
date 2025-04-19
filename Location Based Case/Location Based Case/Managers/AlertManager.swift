@@ -34,4 +34,21 @@ class AlertManager {
     static func showLocationErrorAlert(on viewController: UIViewController, error: Error) {
         showAlert(on: viewController, title: "Location Error", message: "Failed to get location: \(error.localizedDescription)")
     }
+    
+    static func showPermissionAlert(on viewController: UIViewController, title: String, message: String) {
+        let alert = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
+            if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(settingsURL)
+            }
+        })
+        
+        viewController.present(alert, animated: true)
+    }
 }
