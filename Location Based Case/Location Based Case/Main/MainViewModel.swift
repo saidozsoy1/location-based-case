@@ -46,6 +46,10 @@ protocol MainViewModelDelegate: AnyObject {
 }
 
 final class MainViewModel {
+    deinit {
+        removeObservers()
+    }
+    
     private var locationManager: LocationManaging
     private var dataManager: DataManaging
     weak var delegate: MainViewModelDelegate?
@@ -78,6 +82,21 @@ final class MainViewModel {
         self.dataManager = dataManager
         self.locationManager.delegate = self
         loadSavedRoute()
+        NotificationManager.listen(self, selector: #selector(appDidEnterBackground), name: .appDidEnterBackground)
+        NotificationManager.listen(self, selector: #selector(appWillEnterForeground), name: .appWillEnterForeground)
+    }
+    
+    @objc private func appDidEnterBackground() {
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+    
+    @objc private func appWillEnterForeground() {
+        locationManager.stopMonitoringSignificantLocationChanges()
+    }
+    
+    private func removeObservers() {
+        NotificationManager.removeObserver(self, name: .appDidEnterBackground)
+        NotificationManager.removeObserver(self, name: .appWillEnterForeground)
     }
     
     func getPermissionStatus() -> TrackingPermissionStatus {
@@ -129,7 +148,7 @@ final class MainViewModel {
     
     func stopTracking() {
         isTrackingActive = false
-        locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation(shouldContinueInTheBackground: false)
     }
     
     func toggleTracking() {
@@ -227,6 +246,9 @@ extension MainViewModel: LocationManagerDelegate {
         if shouldAddLocation(location) {
             saveRoutePoint(location)
         }
+        
+        //Check if updating locations work in the background
+        NSLog("DEBUG: LocationBasedCase: didUpdateLocations")
     }
     
     func didChangeAuthorizationStatus(_ status: CLAuthorizationStatus) {

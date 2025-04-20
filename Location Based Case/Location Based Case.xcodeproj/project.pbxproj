@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D3E4BC82DB50CA700F9E4A2 /* RoutePoint.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E4BC62DB50CA700F9E4A2 /* RoutePoint.xcdatamodeld */; };
 		8D3E4BCA2DB50DB700F9E4A2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E4BC92DB50DB700F9E4A2 /* CoreDataManager.swift */; };
+		8D3E4BCC2DB513F000F9E4A2 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3E4BCB2DB513F000F9E4A2 /* NotificationManager.swift */; };
 		8D5CC7362DB41FCD006553B2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CC7332DB41FCD006553B2 /* DataManager.swift */; };
 		8D5CC7372DB41FCD006553B2 /* StoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CC7342DB41FCD006553B2 /* StoreDataManager.swift */; };
 		8D5CC73C2DB426B8006553B2 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5CC73B2DB426B8006553B2 /* AlertManager.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		8D3E4BC72DB50CA700F9E4A2 /* RoutePoint.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoutePoint.xcdatamodel; sourceTree = "<group>"; };
 		8D3E4BC92DB50DB700F9E4A2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		8D3E4BCB2DB513F000F9E4A2 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8D5CC7332DB41FCD006553B2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		8D5CC7342DB41FCD006553B2 /* StoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataManager.swift; sourceTree = "<group>"; };
 		8D5CC73B2DB426B8006553B2 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				8D9242092DB3C0260005A4CB /* LocationManager.swift */,
 				8D5CC7332DB41FCD006553B2 /* DataManager.swift */,
+				8D3E4BCB2DB513F000F9E4A2 /* NotificationManager.swift */,
 				8D5CC7342DB41FCD006553B2 /* StoreDataManager.swift */,
 				8D3E4BC92DB50DB700F9E4A2 /* CoreDataManager.swift */,
 				8D5CC7402DB432C6006553B2 /* LoadingManager.swift */,
@@ -269,6 +272,7 @@
 				8D9241FF2DB3BF910005A4CB /* SceneDelegate.swift in Sources */,
 				8D9242002DB3BF910005A4CB /* MainViewController.swift in Sources */,
 				8D3E4BC82DB50CA700F9E4A2 /* RoutePoint.xcdatamodeld in Sources */,
+				8D3E4BCC2DB513F000F9E4A2 /* NotificationManager.swift in Sources */,
 				8D3E4BCA2DB50DB700F9E4A2 /* CoreDataManager.swift in Sources */,
 				8D92420E2DB3C10B0005A4CB /* SplashViewController.swift in Sources */,
 			);

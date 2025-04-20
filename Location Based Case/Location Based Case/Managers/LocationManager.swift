@@ -18,7 +18,9 @@ protocol LocationManaging {
     func requestWhenInUseAuthorization()
     func requestAlwaysAuthorization()
     func startUpdatingLocation()
-    func stopUpdatingLocation()
+    func stopUpdatingLocation(shouldContinueInTheBackground: Bool)
+    func startMonitoringSignificantLocationChanges()
+    func stopMonitoringSignificantLocationChanges()
 }
 
 protocol LocationManagerDelegate: AnyObject {
@@ -63,15 +65,29 @@ final class LocationManager: NSObject, LocationManaging {
     func startUpdatingLocation() {
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 100.0
         locationManager.startUpdatingLocation()
     }
     
-    func stopUpdatingLocation() {
+    func stopUpdatingLocation(shouldContinueInTheBackground: Bool) {
         locationManager.stopUpdatingLocation()
-        locationManager.allowsBackgroundLocationUpdates = false
-        locationManager.pausesLocationUpdatesAutomatically = true
+        if (!shouldContinueInTheBackground) {
+            locationManager.allowsBackgroundLocationUpdates = false
+            locationManager.pausesLocationUpdatesAutomatically = true
+        }
+    }
+    
+    func startMonitoringSignificantLocationChanges() {
+        // if we'd like to decrease battery usage but get less frequent updates ie. every 500 meters
+//        stopUpdatingLocation(shouldContinueInTheBackground: true)
+        
+        // Just to be safe in background also use significantLocationChanges
+        locationManager.startMonitoringSignificantLocationChanges()
+    }
+    
+    func stopMonitoringSignificantLocationChanges() {
+        locationManager.stopMonitoringSignificantLocationChanges()
     }
 }
 

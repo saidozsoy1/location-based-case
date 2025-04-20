@@ -33,3 +33,8 @@ extension UIViewController {
         )
     }
 }
+
+extension Notification.Name {
+    static let appWillEnterForeground = Notification.Name(rawValue: "AppWillEnterForeground")
+    static let appDidEnterBackground = Notification.Name(rawValue: "AppDidEnterBackground")
+}
