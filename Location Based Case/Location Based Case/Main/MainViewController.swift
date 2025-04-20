@@ -27,7 +27,6 @@ final class MainViewController: UIViewController {
         setupUI()
         setupMap()
         setupViewModel()
-        mapView.showsUserLocation = viewModel.isTracking
     }
     
     @IBAction func toggleTracking(_ sender: Any) {
@@ -48,6 +47,7 @@ final class MainViewController: UIViewController {
     }
     
     private func setupMap() {
+        mapView.showsUserLocation = true
         mapView.showsUserTrackingButton = true
         mapView.delegate = self
     }
@@ -84,14 +84,6 @@ final class MainViewController: UIViewController {
         mapView.setRegion(region, animated: true)
     }
     
-    private func addAnnotation(for location: CLLocation) {
-        let annotationIndex = routeAnnotations.count + 1
-        let annotation = RouteAnnotation(coordinate: location.coordinate, index: annotationIndex)
-        mapView.addAnnotation(annotation)
-        routeAnnotations.append(annotation)
-        resetRouteButton?.isEnabled = true
-    }
-    
     private func clearAnnotations() {
         mapView.removeAnnotations(routeAnnotations)
         routeAnnotations.removeAll()
@@ -122,7 +114,7 @@ extension MainViewController: MainViewModelDelegate {
     
     func didAddRoutePoint(_ location: CLLocation) {
         DispatchQueue.main.async { [weak self] in
-            let annotationIndex = self?.routeAnnotations.count ?? 0 + 1
+            let annotationIndex = (self?.routeAnnotations.count ?? 0) + 1
             let annotation = RouteAnnotation(coordinate: location.coordinate, index: annotationIndex)
             
             self?.mapView.addAnnotation(annotation)

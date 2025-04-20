@@ -21,8 +21,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let dependencyContainer = AppDependencyContainer()
-        let coordinator = AppCoordinator(window: window, dependencyContainer: dependencyContainer)
+//        let container = AppDependencyContainer(storageType: .userDefaults)
+        let container = AppDependencyContainer()
+        
+        // Debug - Print CoreData store location
+        if let docsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            print("DEBUG: CoreData store location: \(docsDir.path)")
+        }
+        
+        let coordinator = AppCoordinator(window: window, dependencyContainer: container)
         self.appCoordinator = coordinator
         coordinator.start()
     }

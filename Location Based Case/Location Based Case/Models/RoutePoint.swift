@@ -19,6 +19,13 @@ struct RoutePoint: Codable {
         self.timestamp = location.timestamp.timeIntervalSince1970
     }
     
+    // Initializer for creating from CoreData entity
+    init(latitude: Double, longitude: Double, timestamp: Double) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.timestamp = timestamp
+    }
+    
     func toLocation() -> CLLocation {
         let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let date = Date(timeIntervalSince1970: timestamp)

@@ -22,10 +22,11 @@ protocol DataManaging {
 
 class DataManager: DataManaging {
     private let storeManager: StoreDataManaging
-    private let geocoder = CLGeocoder()
+    private let geocoder: CLGeocoder
     
-    init(storeManager: StoreDataManaging = StoreDataManager()) {
+    init(storeManager: StoreDataManaging, geocoder: CLGeocoder = CLGeocoder()) {
         self.storeManager = storeManager
+        self.geocoder = geocoder
     }
     
     func saveRoutePoints(_ routePoints: [RoutePoint]) throws {
