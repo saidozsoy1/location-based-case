@@ -43,6 +43,7 @@ protocol MainViewModelDelegate: AnyObject {
     func didTrackingChange(_ isTrackingActive: Bool, trackingButtonText: String)
     func didRetrieveAddress(for annotation: RouteAnnotation, address: String?)
     func showPermissionAlert()
+    func locationPermissionGranted()
 }
 
 protocol MainViewModelProtocol: LocationManagerDelegate {
@@ -151,6 +152,7 @@ final class MainViewModel: MainViewModelProtocol {
                     // Permission granted, start updating
                     self?.isTrackingActive = true
                     self?.locationManager.startUpdatingLocation()
+                    self?.delegate?.locationPermissionGranted()
                 case .denied, .restricted:
                     // Need to show permission alert
                     self?.delegate?.showPermissionAlert()

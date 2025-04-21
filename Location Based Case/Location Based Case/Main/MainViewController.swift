@@ -60,13 +60,6 @@ final class MainViewController: UIViewController {
         viewModel.loadSavedRoute()
     }
     
-    private func updateMapForTracking(isTracking: Bool) {
-        mapView.showsUserLocation = isTracking
-        if !isTracking {
-            mapView.setUserTrackingMode(.none, animated: true)
-        }
-    }
-    
     private func updateLocationDisplay(_ location: CLLocation) {
         let latitudeStr = String(location.coordinate.latitude)
         let longitudeStr = String(location.coordinate.longitude)
@@ -163,6 +156,10 @@ extension MainViewController: MainViewModelDelegate {
         if let location = location {
             setMapRegion(for: location)
         }
+    }
+    
+    func locationPermissionGranted() {
+        mapView.setUserTrackingMode(.follow, animated: false)
     }
 }
 
