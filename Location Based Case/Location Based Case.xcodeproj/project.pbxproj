@@ -72,6 +72,7 @@
 		8D5CC7402DB432C6006553B2 /* LoadingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingManager.swift; sourceTree = "<group>"; };
 		8D5CC74C2DB44002006553B2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		8D5CC74E2DB440C8006553B2 /* LocalizationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKeys.swift; sourceTree = "<group>"; };
+		8D8035802DB70723004A6D4F /* LocationTrack.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationTrack.gpx; sourceTree = "<group>"; };
 		8D9241F42DB3BF910005A4CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D9241F52DB3BF910005A4CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D9241F62DB3BF910005A4CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -261,6 +262,7 @@
 		8DDB795C2DB2753200408B2B = {
 			isa = PBXGroup;
 			children = (
+				8D8035802DB70723004A6D4F /* LocationTrack.gpx */,
 				8DD131BA2DB6BD0C0085126C /* Location Based Case.xctestplan */,
 				8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */,
 				8D9241FD2DB3BF910005A4CB /* Location Based Case */,
