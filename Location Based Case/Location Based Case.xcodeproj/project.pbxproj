@@ -38,6 +38,9 @@
 		8DD131992DB6A7B40085126C /* MockCLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131952DB6A7B40085126C /* MockCLLocationManager.swift */; };
 		8DD131A02DB6A8970085126C /* LocationManagerAdvancedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD1319A2DB6A8970085126C /* LocationManagerAdvancedTests.swift */; };
 		8DD131A32DB6A8970085126C /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD1319C2DB6A8970085126C /* LocationManagerTests.swift */; };
+		8DD131A72DB6AD4E0085126C /* MockStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131A42DB6AD4E0085126C /* MockStoreDataManager.swift */; };
+		8DD131A82DB6AD4E0085126C /* MockStoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131A52DB6AD4E0085126C /* MockStoreDataManagerTests.swift */; };
+		8DD131A92DB6AD4E0085126C /* StoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131A62DB6AD4E0085126C /* StoreDataManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +88,9 @@
 		8DD131962DB6A7B40085126C /* MockLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationManager.swift; sourceTree = "<group>"; };
 		8DD1319A2DB6A8970085126C /* LocationManagerAdvancedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerAdvancedTests.swift; sourceTree = "<group>"; };
 		8DD1319C2DB6A8970085126C /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
+		8DD131A42DB6AD4E0085126C /* MockStoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStoreDataManager.swift; sourceTree = "<group>"; };
+		8DD131A52DB6AD4E0085126C /* MockStoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStoreDataManagerTests.swift; sourceTree = "<group>"; };
+		8DD131A62DB6AD4E0085126C /* StoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataManagerTests.swift; sourceTree = "<group>"; };
 		8DDB79652DB2753200408B2B /* Location Based Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Based Case.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -195,6 +201,9 @@
 				8DD1319C2DB6A8970085126C /* LocationManagerTests.swift */,
 				8DD131952DB6A7B40085126C /* MockCLLocationManager.swift */,
 				8DD131962DB6A7B40085126C /* MockLocationManager.swift */,
+				8DD131A42DB6AD4E0085126C /* MockStoreDataManager.swift */,
+				8DD131A52DB6AD4E0085126C /* MockStoreDataManagerTests.swift */,
+				8DD131A62DB6AD4E0085126C /* StoreDataManagerTests.swift */,
 			);
 			path = ManagerTests;
 			sourceTree = "<group>";
@@ -355,6 +364,9 @@
 				8DD131A02DB6A8970085126C /* LocationManagerAdvancedTests.swift in Sources */,
 				8DD131A32DB6A8970085126C /* LocationManagerTests.swift in Sources */,
 				8DD131932DB6A6EB0085126C /* Location_Based_CaseTests.swift in Sources */,
+				8DD131A72DB6AD4E0085126C /* MockStoreDataManager.swift in Sources */,
+				8DD131A82DB6AD4E0085126C /* MockStoreDataManagerTests.swift in Sources */,
+				8DD131A92DB6AD4E0085126C /* StoreDataManagerTests.swift in Sources */,
 				8DD131972DB6A7B40085126C /* MockLocationManager.swift in Sources */,
 				8DD131992DB6A7B40085126C /* MockCLLocationManager.swift in Sources */,
 			);
