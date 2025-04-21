@@ -11,7 +11,7 @@ import MapKit
 class RouteAnnotation: MKPointAnnotation {
     var index: Int = 0
     
-    init(coordinate: CLLocationCoordinate2D, index: Int = 0) {
+    init(coordinate: CLLocationCoordinate2D, index: Int = 1) {
         self.index = index
         super.init()
         self.coordinate = coordinate
