@@ -13,7 +13,7 @@ protocol NotificationUserInfo {
     func toDictionary() -> [AnyHashable : Any]
 }
 
-class NotificationManager {
+final class NotificationManager {
     static func post(_ name: Notification.Name, userInfo: NotificationUserInfo? = nil) {
         NotificationCenter.default.post(name: name, object: nil, userInfo: userInfo?.toDictionary())
     }

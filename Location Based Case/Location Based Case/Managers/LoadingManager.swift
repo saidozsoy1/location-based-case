@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoadingManager {
+final class LoadingManager {
     private static var activityIndicator: UIActivityIndicatorView?
     private static var containerView: UIView?
     

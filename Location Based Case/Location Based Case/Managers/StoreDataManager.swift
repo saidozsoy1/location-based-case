@@ -27,7 +27,7 @@ enum StoreDataError: Error {
     case noDataFound
 }
 
-class StoreDataManager: StoreDataManaging {
+final class StoreDataManager: StoreDataManaging {
     private let userDefaults: UserDefaults
     
     init(userDefaults: UserDefaults = .standard) {

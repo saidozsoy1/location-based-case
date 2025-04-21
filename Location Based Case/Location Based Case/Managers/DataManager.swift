@@ -20,7 +20,7 @@ protocol DataManaging {
     func getAddressFromLocation(_ location: CLLocation, completion: @escaping (String?, Error?) -> Void)
 }
 
-class DataManager: DataManaging {
+final class DataManager: DataManaging {
     private let storeManager: StoreDataManaging
     private let geocoder: CLGeocoder
     

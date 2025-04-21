@@ -16,7 +16,7 @@ protocol CoreDataManaging: StoreDataManaging {
     func saveContext() throws
 }
 
-class CoreDataManager: CoreDataManaging {
+final class CoreDataManager: CoreDataManaging {
     // MARK: - Core Data Stack
     private let persistentContainer: NSPersistentContainer
     

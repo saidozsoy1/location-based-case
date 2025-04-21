@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlertManager {
+final class AlertManager {
     static func showAlert(on viewController: UIViewController, title: String, message: String, completion: (() -> Void)? = nil) {
         let alert = UIAlertController(
             title: title,
