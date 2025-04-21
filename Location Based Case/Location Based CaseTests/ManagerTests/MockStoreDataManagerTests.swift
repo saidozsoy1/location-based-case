@@ -49,7 +49,9 @@ class MockStoreDataManagerTests: XCTestCase {
         // Given
         let testObject = TestObject(id: 1, name: "Test")
         try mockStoreManager.saveObject(testObject, forKey: .routePoints)
-        mockStoreManager.reset() // Reset counters
+
+        // Reset counters but keep stored data by using resetCounters
+        mockStoreManager.resetCounters()
         
         // When
         let loadedObject = try mockStoreManager.loadObject(forKey: .routePoints, as: TestObject.self)
@@ -120,5 +122,8 @@ class MockStoreDataManagerTests: XCTestCase {
         XCTAssertNil(mockStoreManager.lastSavedKey)
         XCTAssertNil(mockStoreManager.lastLoadedKey)
         XCTAssertNil(mockStoreManager.lastRemovedKey)
+        
+        // Storage should be empty after reset
+        XCTAssertNil(try mockStoreManager.loadObject(forKey: .routePoints, as: TestObject.self))
     }
 } 

@@ -21,7 +21,7 @@ final class LocationManagerTests: XCTestCase {
     }
     
     func testInitialization() {
-        // Yeni bir locationManager oluşturalım ki delegate'i null olsun
+        // Let's create a new locationManager to ensure its delegate is null
         let newLocationManager = LocationManager()
         XCTAssertNotNil(newLocationManager)
         XCTAssertNil(newLocationManager.delegate)

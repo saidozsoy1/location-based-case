@@ -41,6 +41,9 @@
 		8DD131A72DB6AD4E0085126C /* MockStoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131A42DB6AD4E0085126C /* MockStoreDataManager.swift */; };
 		8DD131A82DB6AD4E0085126C /* MockStoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131A52DB6AD4E0085126C /* MockStoreDataManagerTests.swift */; };
 		8DD131A92DB6AD4E0085126C /* StoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131A62DB6AD4E0085126C /* StoreDataManagerTests.swift */; };
+		8DD131AD2DB6AE0C0085126C /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131AB2DB6AE0C0085126C /* MockCoreDataManager.swift */; };
+		8DD131AE2DB6AE0C0085126C /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131AA2DB6AE0C0085126C /* CoreDataManagerTests.swift */; };
+		8DD131AF2DB6AE0C0085126C /* NotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131AC2DB6AE0C0085126C /* NotificationManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		8DD131A42DB6AD4E0085126C /* MockStoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStoreDataManager.swift; sourceTree = "<group>"; };
 		8DD131A52DB6AD4E0085126C /* MockStoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStoreDataManagerTests.swift; sourceTree = "<group>"; };
 		8DD131A62DB6AD4E0085126C /* StoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDataManagerTests.swift; sourceTree = "<group>"; };
+		8DD131AA2DB6AE0C0085126C /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
+		8DD131AB2DB6AE0C0085126C /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
+		8DD131AC2DB6AE0C0085126C /* NotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManagerTests.swift; sourceTree = "<group>"; };
 		8DDB79652DB2753200408B2B /* Location Based Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Based Case.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -204,6 +210,9 @@
 				8DD131A42DB6AD4E0085126C /* MockStoreDataManager.swift */,
 				8DD131A52DB6AD4E0085126C /* MockStoreDataManagerTests.swift */,
 				8DD131A62DB6AD4E0085126C /* StoreDataManagerTests.swift */,
+				8DD131AA2DB6AE0C0085126C /* CoreDataManagerTests.swift */,
+				8DD131AB2DB6AE0C0085126C /* MockCoreDataManager.swift */,
+				8DD131AC2DB6AE0C0085126C /* NotificationManagerTests.swift */,
 			);
 			path = ManagerTests;
 			sourceTree = "<group>";
@@ -362,6 +371,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD131A02DB6A8970085126C /* LocationManagerAdvancedTests.swift in Sources */,
+				8DD131AD2DB6AE0C0085126C /* MockCoreDataManager.swift in Sources */,
+				8DD131AE2DB6AE0C0085126C /* CoreDataManagerTests.swift in Sources */,
+				8DD131AF2DB6AE0C0085126C /* NotificationManagerTests.swift in Sources */,
 				8DD131A32DB6A8970085126C /* LocationManagerTests.swift in Sources */,
 				8DD131932DB6A6EB0085126C /* Location_Based_CaseTests.swift in Sources */,
 				8DD131A72DB6AD4E0085126C /* MockStoreDataManager.swift in Sources */,

@@ -2,21 +2,21 @@ import Foundation
 @testable import Location_Based_Case
 
 class MockStoreDataManager: StoreDataManaging {
-    // Test edilen metotları takip etmek için
+    // Counters to track tested methods
     var saveObjectCallCount = 0
     var loadObjectCallCount = 0
     var removeObjectCallCount = 0
     
-    // Test hatalarını simüle etmek için
+    // For simulating test errors
     var shouldThrowOnSave = false
     var shouldThrowOnLoad = false
     
-    // Metotların çağrılma durumlarını takip etmek için
+    // To track method calls
     var lastSavedKey: StoreKey?
     var lastLoadedKey: StoreKey?
     var lastRemovedKey: StoreKey?
     
-    // Test verilerini depolamak için
+    // For storing test data
     private var storage: [String: Data] = [:]
     
     func saveObject<T: Encodable>(_ object: T, forKey key: StoreKey) throws {
@@ -61,16 +61,21 @@ class MockStoreDataManager: StoreDataManaging {
         storage.removeValue(forKey: key.key)
     }
     
-    // Test için yardımcı metot - depolama durumunu sıfırlar
-    func reset() {
+    // Only resets counters and status flags, preserves stored data
+    func resetCounters() {
         saveObjectCallCount = 0
         loadObjectCallCount = 0
         removeObjectCallCount = 0
         lastSavedKey = nil
         lastLoadedKey = nil
         lastRemovedKey = nil
-        storage.removeAll()
         shouldThrowOnSave = false
         shouldThrowOnLoad = false
+    }
+    
+    // Helper method for testing - resets entire storage state
+    func reset() {
+        resetCounters() // Reset counters and flags
+        storage.removeAll() // Clear all storage
     }
 } 

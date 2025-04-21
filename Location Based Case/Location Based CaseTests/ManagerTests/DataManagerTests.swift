@@ -57,7 +57,7 @@ class DataManagerTests: XCTestCase {
     
     func testClearRoutePoints() {
         // Given
-        // Kaydetme işlemini test etmek için önce bir şey kaydedelim
+        // Save something to test the clearing process
         
         // When
         sut.clearRoutePoints()
