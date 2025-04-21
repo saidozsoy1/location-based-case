@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 
 final class MainViewController: UIViewController {
-    var viewModel: MainViewModel!
+    var viewModel: MainViewModelProtocol!
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locationLabel: UILabel?

@@ -45,7 +45,24 @@ protocol MainViewModelDelegate: AnyObject {
     func showPermissionAlert()
 }
 
-final class MainViewModel {
+protocol MainViewModelProtocol: AnyObject {
+    var delegate: MainViewModelDelegate? { get set }
+    var currentLocation: CLLocation? { get }
+    var authorizationStatus: CLAuthorizationStatus { get }
+    var isTracking: Bool { get }
+    
+    func getPermissionStatus() -> TrackingPermissionStatus
+    func startTracking()
+    func stopTracking()
+    func toggleTracking()
+    func requestAlwaysPermission()
+    func requestLocation()
+    func resetRoute()
+    func loadSavedRoute()
+    func getAddressForAnnotation(_ annotation: RouteAnnotation)
+}
+
+final class MainViewModel: MainViewModelProtocol {
     deinit {
         removeObservers()
     }

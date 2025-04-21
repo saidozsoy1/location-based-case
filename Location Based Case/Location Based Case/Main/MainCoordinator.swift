@@ -24,7 +24,7 @@ final class MainCoordinator {
             fatalError("Could not instantiate MainViewController from storyboard")
         }
         
-        let viewModel = MainViewModel(locationManager: locationManager, dataManager: dataManager)
+        let viewModel: MainViewModelProtocol = MainViewModel(locationManager: locationManager, dataManager: dataManager)
         viewController.viewModel = viewModel
         navigationController.setViewControllers([viewController], animated: true)
     }
