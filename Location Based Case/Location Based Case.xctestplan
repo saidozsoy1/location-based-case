@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "BA6B8134-692C-438D-9D92-99C164110C71",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Location Based Case.xcodeproj",
+      "identifier" : "8DDB79642DB2753200408B2B",
+      "name" : "Location Based Case"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Location Based Case.xcodeproj",
+        "identifier" : "8DD131812DB6A6DE0085126C",
+        "name" : "Location Based CaseTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -107,6 +107,7 @@
 		8DD131B22DB6B1250085126C /* RoutePointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePointTests.swift; sourceTree = "<group>"; };
 		8DD131B62DB6B2DC0085126C /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 		8DD131B82DB6B4CA0085126C /* DataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManagerTests.swift; sourceTree = "<group>"; };
+		8DD131BA2DB6BD0C0085126C /* Location Based Case.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Location Based Case.xctestplan"; sourceTree = "<group>"; };
 		8DDB79652DB2753200408B2B /* Location Based Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Based Case.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,6 +261,7 @@
 		8DDB795C2DB2753200408B2B = {
 			isa = PBXGroup;
 			children = (
+				8DD131BA2DB6BD0C0085126C /* Location Based Case.xctestplan */,
 				8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */,
 				8D9241FD2DB3BF910005A4CB /* Location Based Case */,
 				8DD131922DB6A6EB0085126C /* Location Based CaseTests */,
