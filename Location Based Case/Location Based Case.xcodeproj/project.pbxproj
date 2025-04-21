@@ -33,7 +33,22 @@
 		8D9242152DB3C4270005A4CB /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9242142DB3C4260005A4CB /* MainViewModel.swift */; };
 		8D9242192DB3DD9E0005A4CB /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9242172DB3DD9E0005A4CB /* RoutePoint.swift */; };
 		8D92421A2DB3DD9E0005A4CB /* RouteAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9242162DB3DD9E0005A4CB /* RouteAnnotation.swift */; };
+		8DD131932DB6A6EB0085126C /* Location_Based_CaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131912DB6A6EB0085126C /* Location_Based_CaseTests.swift */; };
+		8DD131972DB6A7B40085126C /* MockLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131962DB6A7B40085126C /* MockLocationManager.swift */; };
+		8DD131992DB6A7B40085126C /* MockCLLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD131952DB6A7B40085126C /* MockCLLocationManager.swift */; };
+		8DD131A02DB6A8970085126C /* LocationManagerAdvancedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD1319A2DB6A8970085126C /* LocationManagerAdvancedTests.swift */; };
+		8DD131A32DB6A8970085126C /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD1319C2DB6A8970085126C /* LocationManagerTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8DD131862DB6A6DE0085126C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DDB795D2DB2753200408B2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DDB79642DB2753200408B2B;
+			remoteInfo = "Location Based Case";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		8D3E4BC72DB50CA700F9E4A2 /* RoutePoint.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RoutePoint.xcdatamodel; sourceTree = "<group>"; };
@@ -64,10 +79,23 @@
 		8D9242162DB3DD9E0005A4CB /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		8D9242172DB3DD9E0005A4CB /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
 		8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AppleHighwayDrive.gpx; path = "Location Based Case/AppleHighwayDrive.gpx"; sourceTree = "<group>"; };
+		8DD131822DB6A6DE0085126C /* Location Based CaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Location Based CaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DD131912DB6A6EB0085126C /* Location_Based_CaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location_Based_CaseTests.swift; sourceTree = "<group>"; };
+		8DD131952DB6A7B40085126C /* MockCLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCLLocationManager.swift; sourceTree = "<group>"; };
+		8DD131962DB6A7B40085126C /* MockLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLocationManager.swift; sourceTree = "<group>"; };
+		8DD1319A2DB6A8970085126C /* LocationManagerAdvancedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerAdvancedTests.swift; sourceTree = "<group>"; };
+		8DD1319C2DB6A8970085126C /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 		8DDB79652DB2753200408B2B /* Location Based Case.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Location Based Case.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8DD1317F2DB6A6DE0085126C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DDB79622DB2753200408B2B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -160,11 +188,48 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8DD1318E2DB6A6EB0085126C /* ManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				8DD1319A2DB6A8970085126C /* LocationManagerAdvancedTests.swift */,
+				8DD1319C2DB6A8970085126C /* LocationManagerTests.swift */,
+				8DD131952DB6A7B40085126C /* MockCLLocationManager.swift */,
+				8DD131962DB6A7B40085126C /* MockLocationManager.swift */,
+			);
+			path = ManagerTests;
+			sourceTree = "<group>";
+		};
+		8DD1318F2DB6A6EB0085126C /* ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelTests;
+			sourceTree = "<group>";
+		};
+		8DD131902DB6A6EB0085126C /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModelTests;
+			sourceTree = "<group>";
+		};
+		8DD131922DB6A6EB0085126C /* Location Based CaseTests */ = {
+			isa = PBXGroup;
+			children = (
+				8DD1318E2DB6A6EB0085126C /* ManagerTests */,
+				8DD1318F2DB6A6EB0085126C /* ModelTests */,
+				8DD131902DB6A6EB0085126C /* ViewModelTests */,
+				8DD131912DB6A6EB0085126C /* Location_Based_CaseTests.swift */,
+			);
+			path = "Location Based CaseTests";
+			sourceTree = "<group>";
+		};
 		8DDB795C2DB2753200408B2B = {
 			isa = PBXGroup;
 			children = (
 				8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */,
 				8D9241FD2DB3BF910005A4CB /* Location Based Case */,
+				8DD131922DB6A6EB0085126C /* Location Based CaseTests */,
 				8DDB79662DB2753200408B2B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -173,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8DDB79652DB2753200408B2B /* Location Based Case.app */,
+				8DD131822DB6A6DE0085126C /* Location Based CaseTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +246,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8DD131812DB6A6DE0085126C /* Location Based CaseTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DD1318A2DB6A6DE0085126C /* Build configuration list for PBXNativeTarget "Location Based CaseTests" */;
+			buildPhases = (
+				8DD1317E2DB6A6DE0085126C /* Sources */,
+				8DD1317F2DB6A6DE0085126C /* Frameworks */,
+				8DD131802DB6A6DE0085126C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DD131872DB6A6DE0085126C /* PBXTargetDependency */,
+			);
+			name = "Location Based CaseTests";
+			packageProductDependencies = (
+			);
+			productName = "Location Based CaseTests";
+			productReference = 8DD131822DB6A6DE0085126C /* Location Based CaseTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		8DDB79642DB2753200408B2B /* Location Based Case */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DDB79782DB2753400408B2B /* Build configuration list for PBXNativeTarget "Location Based Case" */;
@@ -209,6 +295,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					8DD131812DB6A6DE0085126C = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 8DDB79642DB2753200408B2B;
+					};
 					8DDB79642DB2753200408B2B = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -230,11 +320,19 @@
 			projectRoot = "";
 			targets = (
 				8DDB79642DB2753200408B2B /* Location Based Case */,
+				8DD131812DB6A6DE0085126C /* Location Based CaseTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8DD131802DB6A6DE0085126C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DDB79632DB2753200408B2B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -250,6 +348,18 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8DD1317E2DB6A6DE0085126C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DD131A02DB6A8970085126C /* LocationManagerAdvancedTests.swift in Sources */,
+				8DD131A32DB6A8970085126C /* LocationManagerTests.swift in Sources */,
+				8DD131932DB6A6EB0085126C /* Location_Based_CaseTests.swift in Sources */,
+				8DD131972DB6A7B40085126C /* MockLocationManager.swift in Sources */,
+				8DD131992DB6A7B40085126C /* MockCLLocationManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DDB79612DB2753200408B2B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -280,6 +390,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8DD131872DB6A6DE0085126C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DDB79642DB2753200408B2B /* Location Based Case */;
+			targetProxy = 8DD131862DB6A6DE0085126C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		8D9241F82DB3BF910005A4CB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -300,6 +418,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8DD131882DB6A6DE0085126C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7JWEK8SPAT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.saidozsoy.Location-Based-CaseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Location Based Case.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Location Based Case";
+			};
+			name = Debug;
+		};
+		8DD131892DB6A6DE0085126C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7JWEK8SPAT;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.saidozsoy.Location-Based-CaseTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Location Based Case.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Location Based Case";
+			};
+			name = Release;
+		};
 		8DDB79792DB2753400408B2B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -480,6 +634,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8DD1318A2DB6A6DE0085126C /* Build configuration list for PBXNativeTarget "Location Based CaseTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DD131882DB6A6DE0085126C /* Debug */,
+				8DD131892DB6A6DE0085126C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8DDB79602DB2753200408B2B /* Build configuration list for PBXProject "Location Based Case" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
