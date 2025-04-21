@@ -45,7 +45,7 @@ protocol MainViewModelDelegate: AnyObject {
     func showPermissionAlert()
 }
 
-protocol MainViewModelProtocol: AnyObject {
+protocol MainViewModelProtocol: LocationManagerDelegate {
     var delegate: MainViewModelDelegate? { get set }
     var currentLocation: CLLocation? { get }
     var authorizationStatus: CLAuthorizationStatus { get }
@@ -60,6 +60,8 @@ protocol MainViewModelProtocol: AnyObject {
     func resetRoute()
     func loadSavedRoute()
     func getAddressForAnnotation(_ annotation: RouteAnnotation)
+    func appDidEnterBackground()
+    func appWillEnterForeground()
 }
 
 final class MainViewModel: MainViewModelProtocol {
@@ -103,11 +105,11 @@ final class MainViewModel: MainViewModelProtocol {
         NotificationManager.listen(self, selector: #selector(appWillEnterForeground), name: .appWillEnterForeground)
     }
     
-    @objc private func appDidEnterBackground() {
+    @objc func appDidEnterBackground() {
         locationManager.startMonitoringSignificantLocationChanges()
     }
     
-    @objc private func appWillEnterForeground() {
+    @objc func appWillEnterForeground() {
         locationManager.stopMonitoringSignificantLocationChanges()
     }
     

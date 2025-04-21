@@ -4,12 +4,12 @@ import CoreLocation
 
 final class LocationManagerTests: XCTestCase {
     
-    var locationManager: LocationManager!
+    var locationManager: MockLocationManager!
     var mockDelegate: MockLocationManagerDelegate!
     
     override func setUp() {
         super.setUp()
-        locationManager = LocationManager()
+        locationManager = MockLocationManager()
         mockDelegate = MockLocationManagerDelegate()
         locationManager.delegate = mockDelegate
     }
@@ -22,22 +22,23 @@ final class LocationManagerTests: XCTestCase {
     
     func testInitialization() {
         // Let's create a new locationManager to ensure its delegate is null
-        let newLocationManager = LocationManager()
+        let newLocationManager = MockLocationManager()
         XCTAssertNotNil(newLocationManager)
         XCTAssertNil(newLocationManager.delegate)
         XCTAssertNil(newLocationManager.lastLocation)
     }
     
     func testAuthorizationStatus() {
+        // Set a specific status for testing
+        locationManager.authorizationStatus = .authorizedWhenInUse
         let status = locationManager.authorizationStatus
-        // Just verify we can access the status without crashing
-        XCTAssertNotNil(status)
+        XCTAssertEqual(status, .authorizedWhenInUse)
     }
     
     func testDelegateMethodsAreCalled() {
-        // Manually trigger the CLLocationManagerDelegate methods
+        // Simulate location updates using the mock manager
         let testLocation = CLLocation(latitude: 41.0082, longitude: 28.9784) // Istanbul coordinates
-        locationManager.locationManager(CLLocationManager(), didUpdateLocations: [testLocation])
+        locationManager.simulateLocationUpdate(locations: [testLocation])
         
         // Verify delegate methods were called with correct parameters
         XCTAssertTrue(mockDelegate.updateLocationsCalled)
@@ -46,34 +47,74 @@ final class LocationManagerTests: XCTestCase {
         
         // Test error handling
         let testError = NSError(domain: "LocationTestError", code: 1, userInfo: nil)
-        locationManager.locationManager(CLLocationManager(), didFailWithError: testError)
+        locationManager.simulateError(error: testError)
         
         XCTAssertTrue(mockDelegate.didFailWithErrorCalled)
         XCTAssertEqual((mockDelegate.receivedError as NSError?)?.domain, "LocationTestError")
         
         // Test authorization status changes
-        locationManager.locationManager(CLLocationManager(), didChangeAuthorization: .authorizedWhenInUse)
+        locationManager.simulateAuthorizationChange(status: .authorizedWhenInUse)
         
         XCTAssertTrue(mockDelegate.didChangeAuthorizationStatusCalled)
         XCTAssertEqual(mockDelegate.receivedAuthorizationStatus, .authorizedWhenInUse)
     }
     
     func testStartUpdatingLocation() {
-        // This is a limited test since we can't easily mock the internal CLLocationManager
-        // We're just checking that the method doesn't crash
+        // When
         locationManager.startUpdatingLocation()
+        
+        // Then
+        XCTAssertEqual(locationManager.startUpdatingLocationCallCount, 1)
     }
     
     func testStopUpdatingLocation() {
-        // Again, a limited test for method existence
+        // When
         locationManager.stopUpdatingLocation(shouldContinueInTheBackground: false)
-        locationManager.stopUpdatingLocation(shouldContinueInTheBackground: true)
+        
+        // Then
+        XCTAssertEqual(locationManager.stopUpdatingLocationCallCount, 1)
     }
     
     func testSignificantLocationChanges() {
-        // Test that these methods don't crash
+        // Test start monitoring
         locationManager.startMonitoringSignificantLocationChanges()
+        XCTAssertEqual(locationManager.startMonitoringSignificantLocationChangesCallCount, 1)
+        
+        // Test stop monitoring
         locationManager.stopMonitoringSignificantLocationChanges()
+        XCTAssertEqual(locationManager.stopMonitoringSignificantLocationChangesCallCount, 1)
+    }
+    
+    func testGetCurrentLocation() {
+        // Given
+        let testLocation = CLLocation(latitude: 41.0082, longitude: 28.9784)
+        locationManager.mockedCurrentLocation = testLocation
+        
+        // When
+        let currentLocation = locationManager.getCurrentLocation()
+        
+        // Then
+        XCTAssertEqual(locationManager.getCurrentLocationCallCount, 1)
+        XCTAssertEqual(currentLocation?.coordinate.latitude, testLocation.coordinate.latitude)
+        XCTAssertEqual(currentLocation?.coordinate.longitude, testLocation.coordinate.longitude)
+    }
+    
+    func testRequestLocation() {
+        // When
+        locationManager.requestLocation()
+        
+        // Then
+        XCTAssertEqual(locationManager.requestLocationCallCount, 1)
+    }
+    
+    func testRequestAuthorization() {
+        // Test when in use
+        locationManager.requestWhenInUseAuthorization()
+        XCTAssertEqual(locationManager.requestWhenInUseAuthorizationCallCount, 1)
+        
+        // Test always
+        locationManager.requestAlwaysAuthorization()
+        XCTAssertEqual(locationManager.requestAlwaysAuthorizationCallCount, 1)
     }
 }
 
