@@ -109,6 +109,7 @@ class MainViewModelTests: XCTestCase {
         XCTAssertEqual(mockLocationManager.startUpdatingLocationCallCount, 1)
         XCTAssertTrue(mockDelegate.didTrackingChangeCalled)
         XCTAssertTrue(mockDelegate.isTrackingActive)
+        XCTAssertTrue(mockDelegate.locationPermissionGrantedCalled)
     }
     
     func testStartTrackingWhenDenied() {
@@ -438,6 +439,27 @@ class MainViewModelTests: XCTestCase {
         XCTAssertTrue(mockDelegate.didRetrieveAddressCalled)
         XCTAssertNil(mockDelegate.receivedAddress)
     }
+    
+    // MARK: - Location Permission Tests
+    
+    func testLocationPermissionGrantedCalledWhenStartingTrackingWithPermission() {
+        // Given
+        mockLocationManager.authorizationStatus = .authorizedAlways
+        mockDelegate.reset()
+        
+        // When
+        sut.startTracking()
+        
+        // Need to wait for async operation to complete
+        let expectation = self.expectation(description: "Wait for permission granted")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            expectation.fulfill()
+        }
+        waitForExpectations(timeout: 1.0, handler: nil)
+        
+        // Then
+        XCTAssertTrue(mockDelegate.locationPermissionGrantedCalled, "locationPermissionGranted should be called when tracking starts with permission")
+    }
 }
 
 // MARK: - Mock MainViewModelDelegate
@@ -452,6 +474,7 @@ class MockMainViewModelDelegate: MainViewModelDelegate {
     var didTrackingChangeCalled = false
     var didRetrieveAddressCalled = false
     var showPermissionAlertCalled = false
+    var locationPermissionGrantedCalled = false
     
     // Values received by delegate methods
     var receivedLocation: CLLocation?
@@ -505,6 +528,10 @@ class MockMainViewModelDelegate: MainViewModelDelegate {
         showPermissionAlertCalled = true
     }
     
+    func locationPermissionGranted() {
+        locationPermissionGrantedCalled = true
+    }
+    
     func reset() {
         didUpdateLocationCalled = false
         didChangeAuthorizationStatusCalled = false
@@ -514,6 +541,7 @@ class MockMainViewModelDelegate: MainViewModelDelegate {
         didTrackingChangeCalled = false
         didRetrieveAddressCalled = false
         showPermissionAlertCalled = false
+        locationPermissionGrantedCalled = false
         
         receivedLocation = nil
         receivedStatusText = nil
