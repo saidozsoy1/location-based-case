@@ -90,7 +90,6 @@
 		8D9242142DB3C4260005A4CB /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8D9242162DB3DD9E0005A4CB /* RouteAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAnnotation.swift; sourceTree = "<group>"; };
 		8D9242172DB3DD9E0005A4CB /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
-		8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AppleHighwayDrive.gpx; path = "Location Based Case/AppleHighwayDrive.gpx"; sourceTree = "<group>"; };
 		8DD131822DB6A6DE0085126C /* Location Based CaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Location Based CaseTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DD131912DB6A6EB0085126C /* Location_Based_CaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location_Based_CaseTests.swift; sourceTree = "<group>"; };
 		8DD131952DB6A7B40085126C /* MockCLLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCLLocationManager.swift; sourceTree = "<group>"; };
@@ -264,7 +263,6 @@
 			children = (
 				8D8035802DB70723004A6D4F /* LocationTrack.gpx */,
 				8DD131BA2DB6BD0C0085126C /* Location Based Case.xctestplan */,
-				8D92421B2DB3DEEC0005A4CB /* AppleHighwayDrive.gpx */,
 				8D9241FD2DB3BF910005A4CB /* Location Based Case */,
 				8DD131922DB6A6EB0085126C /* Location Based CaseTests */,
 				8DDB79662DB2753200408B2B /* Products */,
